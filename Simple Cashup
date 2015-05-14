@@ -1,3 +1,5 @@
+##this is a simple program to calculate and end of shift cashup written in python.
+
 def  cashup():
     import time
 
