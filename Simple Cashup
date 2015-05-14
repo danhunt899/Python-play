@@ -1,0 +1,84 @@
+def  cashup():
+    import time
+
+    date = time.strftime("%d.%m.%Y")
+    filename = date + ' CashUp.txt'
+    file = open(filename, 'w')
+
+
+    credit_cards = float(input("What is today's credit card total? "))
+    eft_1 = float(input("What is today's left hand eftpos total? "))
+    eft_2 = float(input("What is today's right hand eftpos total? "))
+    cash = float(input("What is today's cash total? "))
+
+    sub_total = credit_cards + eft_1 + eft_2 + cash
+    
+    any_cheques = input("Are there any cheques? ")
+    any_cheques = any_cheques.lower()
+    cheque = False
+    if(any_cheques[0] == 'y'):
+        cheque_ammount = input("How much were the cheques for? $")
+        cheque_ammount = float(cheque_ammount)
+        sub_total = sub_total + cheque_ammount
+        cheque = True
+
+    any_rcpts = input("Are there any receipts from last night? ")
+    any_rcpts = any_rcpts.lower()
+    rcpt = False
+    if(any_rcpts[0] == 'y'):
+        rcpts_ammount = float(input("How much were the receipts for? $"))
+        sub_total = sub_total - rcpts_ammount
+        rcpt = True
+
+    hell_hole = float(input("What was the MyHellHole total? "))
+    firefly = float(input("What was the Firefly total? "))
+
+    file.write("Hell Pizza Island Bay, Cash Up " + date+"\n")
+    file.write("Cash Up completed at " + time.strftime("%H:%M:S")+"\n")
+    file.write("\n")
+    file.write("The MyHellHole total is: $" + str(hell_hole) +"\n")
+    file.write("The Firefly total is: $" + str(firefly) + "\n")
+    file.write("\n")
+    file.write("\n")
+    file.write("Online Credit Cards: $" + str(credit_cards) +"\n")
+    file.write("Left EFTPOS: $" + str(eft_1) + "\n")
+    file.write("Right EFTPOS: $" + str(eft_2) + "\n")
+    file.write("Cash: $" + str(cash) + "\n")
+    if(cheque==True):
+        file.write("Cheque: " + str(cheque_ammount) + "\n")
+    if(rcpt == True):
+        file.write("\n")
+        file.write("Receipts from lastnight: $" + str(rcpts_ammount) + "\n")
+    file.write("-----------------------------------------------------\n")
+    file.write("The total is $" + str(sub_total) + "\n")
+    file.write("\n")
+    file.write("\n")
+    if(sub_total<hell_hole):
+        file.write("The total is less than MyHellHole by $" + str(hell_hole-sub_total)+"\n")
+        print("The total is less than MyHellHole by $" + str(hell_hole-sub_total)+"\n")
+    elif(sub_total > hell_hole):
+        file.write("The total is more than MyHellHole by $" + str(sub_total-hell_hole)+"\n")
+        print("The total is more than MyHellHole by $" + str(sub_total-hell_hole)+"\n")
+    else:
+        file.write("BINGO\n")
+        print("BINGO\n")
+        file.write("The MyHellHole total and tonight's total are equal!\n")
+        print("The MyHellHole total and tonight's total are equal!\n")
+    file.write("\n")
+    print("\n")
+    if(sub_total<firefly):
+        file.write("The total is less than Firefly by $" + str(firefly-sub_total)+"\n")
+        print("The total is less than Firefly by $" + str(firefly-sub_total)+"\n")
+    elif(sub_total > firefly):
+        file.write("The total is more than Firefly by $" + str(sub_total-firefly)+"\n")
+        print("The total is more than Firefly by $" + str(sub_total-firefly)+"\n")
+    else:
+        file.write("BINGO\n")
+        print("BINGO\n")
+        file.write("The Firefly total and tonight's total are equal!\n")
+        print("The Firefly total and tonight's total are equal!\n")
+
+    
+    
+    
+    
