@@ -2,6 +2,7 @@
 
 def  cashup():
     import time
+##    import win32.print
     import os
 
     date = time.strftime("%d.%m.%Y")
@@ -37,7 +38,7 @@ def  cashup():
     firefly = float(input("What was the Firefly total? "))
 
     file.write("Hell Pizza Island Bay, Cash Up " + date+"\n")
-    file.write("Cash Up completed at " + time.strftime("%H:%M:S")+"\n")
+    file.write("Cash Up completed at " + time.strftime("%H:%M:%S")+"\n")
     file.write("\n")
     file.write("The MyHellHole total is: $" + str(hell_hole) +"\n")
     file.write("The Firefly total is: $" + str(firefly) + "\n")
@@ -80,15 +81,9 @@ def  cashup():
         print("BINGO\n")
         file.write("The Firefly total and tonight's total are equal!\n")
         print("The Firefly total and tonight's total are equal!\n")
-    
-    file.close() 
+
+        file.close() 
     
     file_path = os.path.dirname(os.path.abspath(__file__))
     file_path = file_path+"\\"+filename
-    os.startfile(file_path, print) 
-    
-
-    
-    
-    
-    
+    os.startfile(file_path, "print") 
