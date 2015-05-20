@@ -2,6 +2,7 @@
 
 def  cashup():
     import time
+    import os
 
     date = time.strftime("%d.%m.%Y")
     filename = date + ' CashUp.txt'
@@ -79,6 +80,13 @@ def  cashup():
         print("BINGO\n")
         file.write("The Firefly total and tonight's total are equal!\n")
         print("The Firefly total and tonight's total are equal!\n")
+    
+    file.close() 
+    
+    file_path = os.path.dirname(os.path.abspath(__file__))
+    file_path = file_path+"\\"+filename
+    os.startfile(file_path, print) 
+    
 
     
     
